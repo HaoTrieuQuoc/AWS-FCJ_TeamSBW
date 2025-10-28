@@ -1,7 +1,6 @@
 baseURL = 'https://haotrieuquoc.github.io/AWS-FCJ_TeamSBW/'
 relativeURLs = false
 canonifyURLs = true
-theme = 'hugo-theme-learn'
 publishDir = "public"
 
 # Change the default theme to be use when building the site with Hugo

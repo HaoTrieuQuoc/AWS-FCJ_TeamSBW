@@ -4,19 +4,34 @@ title : "Session Management"
 weight : 1 
 chapter : false
 ---
-# Làm việc với Amazon System Manager - Session Manager
+# Internship Report
 
-### Tổng quan
+### Student Information:
 
- Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon System Manager - Session Management. Thực hành tạo kết nối đến máy chủ public và máy chủ private trong VPC.
+**Full Name:** Trieu Quoc Hao
 
-![ConnectPrivate](/images/arc-log.png) 
+**Phone Number:** 0784919197
 
-### Nội dung
+**Email:** [regit3108@gmail.com](mailto:regit3108@gmail.com)  
 
- 1. [Giới thiệu](1-introduce/)
- 2. [Các bước chuẩn bị](2-Prerequiste/)
- 3. [Tạo kết nối đến máy chủ EC2](3-Accessibilitytoinstance/)
- 4. [Quản lý session logs](4-s3log/)
+**University:** FPT University  
+
+**Major:** Artificial Intelligence 
+
+**Class:** AWS082025  
+
+**Internship Company:** Amazon Web Services Vietnam Co., Ltd.  
+
+**Internship Position:** FCJ Cloud Intern  
+
+**Internship Duration:** From 08/09/2025 to 12/12/2025  
+
+![AboutMe](/images/image-login.jpg)  
+
+### Content
+ 1. [Worklog ](1-worklog/)
+ 2. [Preparation](2-prerequiste/)
+ 3. [Connect to EC2 instance](3-accessibilitytoinstances/)
+ 4. [Manage session logs](4-s3log/)
  5. [Port Forwarding](5-Portfwd/)
- 6. [Dọn dẹp tài nguyên](6-cleanup/)
+ 6. [Clean up resources](6-cleanup/)
