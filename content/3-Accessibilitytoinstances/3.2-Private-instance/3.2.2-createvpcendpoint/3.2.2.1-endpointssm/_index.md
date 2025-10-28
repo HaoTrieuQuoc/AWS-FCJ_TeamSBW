@@ -1,5 +1,5 @@
 ---
-title : "Create Endpoint ssm"
+title : "Create Endpoint ssm."
 
 weight : 1
 chapter : false
