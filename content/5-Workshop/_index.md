@@ -1,5 +1,5 @@
 ---
-title : "5-Workshop"
+title : "Workshop"
 
 weight : 5 
 chapter : false

@@ -1,5 +1,5 @@
 ---
-title : "Connect to Public Instance"
+title : "Blog 1"
 
 weight : 1
 chapter : false

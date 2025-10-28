@@ -1,5 +1,5 @@
 +++
-title = "6-Self-Assessment"
+title = "Self-Assessment"
 date = 2022
 weight = 6
 chapter = false

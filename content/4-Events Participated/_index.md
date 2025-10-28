@@ -1,5 +1,5 @@
 ---
-title : "4-Events Participated"
+title : "Events Participated"
 
 weight : 4
 chapter : false

@@ -1,9 +1,9 @@
 ---
-title : "Blog 2"
+title : "Blog 3"
 
-weight : 2
+weight : 3
 chapter : false
-pre : " <b> 3.2. </b> "
+pre : " <b> 3.3. </b> "
 ---
 For **Windows instance** located in **private subnet**, there is no **public IP**, no **internet gateway** so it cannot go out **internet.**\
 With this type of instance, the traditional way is to use Bastion host technique which is expensive and laborious, but here we will use Session Manager with this type.\

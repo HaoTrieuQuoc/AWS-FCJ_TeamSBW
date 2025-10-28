@@ -1,5 +1,5 @@
 ---
-title : "Create S3 Bucket"
+title : "Event 2"
 
 weight : 2
 chapter : false
