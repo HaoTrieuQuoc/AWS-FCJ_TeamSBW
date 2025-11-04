@@ -19,8 +19,71 @@ pre : " <b> 1.7. </b> "
 |-----|------|------------|-----------------|-------------------|
 | 1-2 | - Study and review **AWS Well-Architected Framework** concepts:<br>&nbsp;&nbsp;• Secure Architectures: IAM, MFA, SCP, Encryption (KMS, TLS/ACM), Security Groups, NACLs, GuardDuty, Shield, WAF, Secrets Manager.<br>&nbsp;&nbsp;• Resilient Architectures: Multi-AZ, Multi-Region, DR Strategies, Auto Scaling, Route 53, Load Balancing, Backup & Restore.<br>&nbsp;&nbsp;• High-Performing Architectures: Compute scaling (EC2 Auto Scaling, Lambda, Fargate), Storage (S3, EFS, EBS), and Content Optimization (CloudFront, Global Accelerator).<br>&nbsp;&nbsp;• Cost-Optimized Architectures: Cost Explorer, Budgets, Savings Plans, Lifecycle Policies, NAT Gateway Optimization, and Storage Tiering. | 10/20/2025 | 10/21/2025 | |
 | 3-4 | - Work with the team to draft the **Project Proposal** including:<br>&nbsp;&nbsp;1. Executive Summary<br>&nbsp;&nbsp;2. Problem Statement<br>&nbsp;&nbsp;3. Solution Architecture<br>&nbsp;&nbsp;4. Technical Implementation<br>&nbsp;&nbsp;5. Timeline & Milestones<br>&nbsp;&nbsp;6. Budget Estimation<br>&nbsp;&nbsp;7. Risk Assessment<br>&nbsp;&nbsp;8. Expected Outcomes | 10/22/2025 | 10/23/2025 | [Proposal](https://docs.google.com/document/d/1LPlnST1PFrpnswfhlIJCtlF_JvGE81YZZtocSGnTKIE/edit?tab=t.0) |
-| 5 | - *(To be determined)* | 10/24/2025 | 10/24/2025 |  |
+| 5 | Review knowledge for the FCJ midterm exam | 10/24/2025 | 10/24/2025 |  |
 
 ---
 
 ## Week 7 Achievements
+
+### 1. AWS Well-Architected Framework Review
+
+#### **Secure Architectures**
+- **Concept:** Ensures data and systems are protected through identity control, encryption, and threat detection.  
+- **How it works:** Uses IAM for access control, MFA for authentication, KMS for encryption, and services like GuardDuty and WAF for continuous monitoring.  
+- **Example:** A web application uses IAM roles, encrypted S3 buckets, and WAF to block malicious requests.
+
+---
+
+#### **Resilient Architectures**
+- **Concept:** Designed to maintain availability and recover quickly from failures.  
+- **How it works:** Deploys workloads across Multi-AZ or Multi-Region environments, uses Route 53 for DNS routing, and Auto Scaling for elasticity.  
+- **Example:** An e-commerce platform automatically redirects traffic to another region if one becomes unavailable.
+
+---
+
+#### **High-Performing Architectures**
+- **Concept:** Focuses on scalability and optimized performance for workloads.  
+- **How it works:** Uses EC2 Auto Scaling and Lambda for dynamic compute, EBS/EFS for storage, and CloudFront for content delivery optimization.  
+- **Example:** A video streaming platform uses CloudFront to deliver videos with low latency to global users.
+
+---
+
+#### **Cost-Optimized Architectures**
+- **Concept:** Minimizes costs while maintaining performance and reliability.  
+- **How it works:** Uses AWS Budgets, Savings Plans, and Cost Explorer to track and optimize resource usage. Lifecycle policies and storage tiering further reduce costs.  
+- **Example:** An analytics system archives old data to S3 Glacier to save storage costs.
+
+---
+
+### 2. Project Proposal Development
+
+#### **Executive Summary**
+- Summarized the project goal and main purpose, outlining the value and outcomes expected from the proposed solution.
+
+#### **Problem Statement**
+- Defined the business and technical problems to address, identifying inefficiencies and challenges in the current system.
+
+#### **Solution Architecture**
+- Designed the initial architecture diagram integrating AWS services such as S3, Lambda, CloudFront, API Gateway, and RDS to meet project requirements.
+
+#### **Technical Implementation**
+- Described how each component will be deployed and connected, including data flow, backend services, and authentication using AWS Cognito.
+
+#### **Timeline & Milestones**
+- Created a clear roadmap for project development phases including research, design, implementation, and testing.
+
+#### **Budget Estimation**
+- Calculated preliminary costs using AWS Pricing Calculator for core services like EC2, S3, CloudWatch, and CloudFront.
+
+#### **Risk Assessment**
+- Identified potential risks such as budget overruns, service limits, and latency issues; proposed mitigation strategies.
+
+#### **Expected Outcomes**
+- Defined measurable results: improved performance, lower latency, and efficient data processing using AWS-managed services.
+
+---
+
+### 3. Team Collaboration
+- All members contributed equally to proposal writing, research, and architectural discussions.  
+- Conducted online meetings to refine ideas and ensure alignment with **Track 4 FCJ** requirements.  
+- Finalized the draft version of the project proposal for instructor feedback.
