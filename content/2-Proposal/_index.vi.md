@@ -48,7 +48,7 @@ Kết quả được visualize bằng **R Shiny dashboards**, giúp chủ cửa 
 
 ### 3. Kiến trúc giải pháp
 
-![Architecture](/images/2.proposal/AWS-Architecture-TeamSBW.jpg)
+![Architecture](/images/2.proposal/Architecture-TeamSBW.png)
 
 #### Dịch vụ AWS sử dụng
 
