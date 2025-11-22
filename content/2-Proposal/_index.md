@@ -48,7 +48,7 @@ The results are visualized using **R Shiny dashboards**, enabling store owners t
 
 ### 3. Solution Architecture
 
-![Architecture](/images/2.proposal/Architecture-TeamSBW.png)
+![Architecture](/images/2.proposal/Architecture-SBWTeam.jpg)
 
 #### AWS Services Used
 
