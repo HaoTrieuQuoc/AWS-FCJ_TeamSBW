@@ -5,7 +5,7 @@ weight : 1
 chapter : false
 pre : " <b> 1. </b> "
 ---
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+**On this page**, I will need to introduce my worklog. **How** did I complete it? How many weeks did I take to complete the program? **What** did I do in those weeks?
 
 Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
 ### Content
@@ -22,3 +22,4 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 - [1.10 Week 10 Worklog](1.10-week10/)
 - [1.11 Week 11 Worklog](1.11-week11/)
 - [1.12 Week 12 Worklog](1.12-week12/)
+- [1.13 Week 13 Worklog](1.13-week13/)

@@ -1,22 +1,69 @@
----
-title : "Giới thiệu"
+--- 
+title : "Week 10 Worklog"
 
-weight : 1 
+weight : 2 
 chapter : false
-pre : " <b> 1. </b> "
+pre : " <b> 1.10. </b> "
 ---
-**Session Manager** là một chức năng nằm trong dịch vụ System Manager của AWS, Session Manager cung cấp khả năng quản lý các máy chủ một cách an toàn mà **không cần mở port SSH, không cần Bastion Host hoặc quản lý SSH key**. 
-Session Manager cũng giúp dễ dàng tuân thủ các chính sách của công ty yêu cầu quyền truy cập có kiểm soát, đảm bảo việc bảo mật nghiêm ngặt và ghi log truy việc truy cập trong khi vẫn cung cấp cho người dùng cuối quyền truy cập đa nền tảng.
+## Mục tiêu của Week 10:
+- Nghiên cứu và cấu hình **Docker** để đóng gói dependencies và services.  
+- Tìm hiểu **LocalStack library versions** và đảm bảo compatibility trước khi containerize vào Docker.  
+- Cập nhật và refine **system architecture (v9)** dựa trên các yêu cầu mới.  
+- Chuẩn bị và chỉnh sửa **phiên bản tiếng Việt** của project documentation.  
+- Tạo **proposal template (DOCX)** mới và lên kế hoạch upload vào Hugo.  
+- Phân công nhiệm vụ viết nội dung cho tất cả thành viên với deadline rõ ràng.
 
-Với việc sử dụng Session Manager, bạn sẽ có được những ưu điểm sau:
+---
 
-- Không cần phải mở cổng 22 cho giao thức SSH.
-- Có thể cấu hình để kết nối không cần đi ra ngoài internet.
-- Không cần quản lý private key của server để kết nối SSH.
-- Quản lý tập trung được user bằng việc sử dụng AWS IAM.
-- Truy cập tới server một cách dễ dàng và đơn giản bằng một cú click chuột.
-- Thời gian truy cập nhanh chóng hơn các phương thức truyền thống như SSH.
-- Hỗ trợ nhiều hệ điều hành khác nhau như Linux, Windows, MacOS.
-- Log lại được các phiên kết nối và các câu lệnh đã thực thi trong lúc kết nối tới server.
+## Tasks to be carried out this week:
 
-Với những ưu điểm trên, bạn có thể sử dụng Session Manager thay vì sử dụng kỹ thuật Bastion host giúp chúng ta tiết kiệm được thời gian và chi phí khi quản lý server Bastion.
+| Day | Task | Start Date | Completion Date | Reference Material |
+|-----|------|------------|-----------------|-------------------|
+| 1-2 | - Research **Docker environment setup**:<br>&nbsp;&nbsp;• Học cách cài đặt và cấu hình libraries bên trong Docker.<br>&nbsp;&nbsp;• Nghiên cứu version compatibility cho các libraries sử dụng trong LocalStack.<br>&nbsp;&nbsp;• Test các services trên LocalStack trước khi đóng gói vào Docker. | 11/10/2025 | 11/11/2025 | [How to use Docker](https://www.youtube.com/watch?v=_PD4j5Ra3kY) |
+| 3 | - Update **Architecture (v9)**:<br>&nbsp;&nbsp;• Refine workflow và các system components.<br>&nbsp;&nbsp;• Đảm bảo phù hợp với clickstream pipeline và AWS services. | 11/12/2025 | 11/12/2025 | |
+| 4 | - Chỉnh sửa **phiên bản tiếng Việt** của documentation và proposal. <br> - Bắt đầu tạo **DOCX proposal template** cho việc submit project (chưa hoàn thành). | 11/13/2025 | 11/13/2025 | |
+| 5 | - Tiếp tục cập nhật architecture và chuẩn bị tài liệu:<br>&nbsp;&nbsp;• Hoàn thiện architecture (v9).<br>&nbsp;&nbsp;• Làm proposal template mới.<br>&nbsp;&nbsp;• Phân công nhiệm vụ viết nội dung:<br>&nbsp;&nbsp;&nbsp;&nbsp;— Section 2: Hào<br>&nbsp;&nbsp;&nbsp;&nbsp;— Section 3: Tín<br>&nbsp;&nbsp;&nbsp;&nbsp;— Section 4: Anh<br>&nbsp;&nbsp;&nbsp;&nbsp;— Section 5: Khiêm<br>&nbsp;&nbsp;&nbsp;&nbsp;— Section 6: Thống<br>&nbsp;&nbsp;&nbsp;&nbsp;— Section 1 + 7: Whole team<br>&nbsp;&nbsp;• Deadline cho tất cả sections: **14h – 16/11/2025** | 11/14/2025 | 11/14/2025 | [Proposal Template](https://docs.google.com/document/d/1QZ2MfaJ6QRc1XUfagSd5mPQkHSvpIMzcOFdGNksB6Fo/edit?tab=t.0#heading=h.heuv5ufvil13) |
+
+---
+
+## Week 10 Achievements
+
+### 1. Docker & LocalStack Preparation
+- Đã nghiên cứu cách setup Docker để đóng gói Python libraries và các services liên quan đến LocalStack.  
+- Đã tìm hiểu nhiều **library versions** để đảm bảo compatibility trước khi containerize.  
+- Đã test các LocalStack services trên môi trường local để đảm bảo hoạt động ổn định trước khi đưa vào Docker.
+
+---
+
+### 2. Updated System Architecture (v9)
+- Đã chỉnh sửa architecture phù hợp hơn với project goals và AWS services.  
+- Cải thiện flow giữa CloudFront, Amplify, S3, Cognito, API Gateway, Lambda, EventBridge và Data Warehouse chạy trên EC2.  
+- Điều chỉnh việc tích hợp database PostgreSQL và vị trí clickstream pipeline.
+
+---
+
+### 3. Documentation & Vietnamese Revision
+- Đã cập nhật và chỉnh sửa **phiên bản tiếng Việt** của proposal để rõ ràng và nhất quán hơn.  
+- Xác định các chi tiết còn thiếu và cải thiện cấu trúc nội dung tổng thể.
+
+---
+
+### 4. New Proposal Template (DOCX)
+- Đã bắt đầu tạo **Word proposal template** (khác với bản proposal trước).  
+- Đã dựng khung nội dung nhưng chưa hoàn thiện toàn bộ template.  
+- Lên kế hoạch upload bản DOCX final lên Hugo sau khi định dạng xong.
+
+---
+
+### 5. Team Task Assignment & Deadlines
+- Đã phân công viết nội dung proposal cho từng thành viên:  
+  - Section 2 → Hào  
+  - Section 3 → Tín  
+  - Section 4 → Anh  
+  - Section 5 → Khiêm  
+  - Section 6 → Thống  
+  - Section 1 + 7 → Whole team  
+- Đặt deadline chung: **16/11/2025 – 14:00**.  
+
+- Đảm bảo tất cả thành viên hiểu rõ vai trò của mình và tầm quan trọng của việc proposal phải bám sát yêu cầu của track.
+

@@ -1,22 +1,25 @@
 ---
-title : "Giới thiệu"
+title : "Worklog"
 
 weight : 1 
 chapter : false
 pre : " <b> 1. </b> "
 ---
-**Session Manager** là một chức năng nằm trong dịch vụ System Manager của AWS, Session Manager cung cấp khả năng quản lý các máy chủ một cách an toàn mà **không cần mở port SSH, không cần Bastion Host hoặc quản lý SSH key**. 
-Session Manager cũng giúp dễ dàng tuân thủ các chính sách của công ty yêu cầu quyền truy cập có kiểm soát, đảm bảo việc bảo mật nghiêm ngặt và ghi log truy việc truy cập trong khi vẫn cung cấp cho người dùng cuối quyền truy cập đa nền tảng.
+**Trên trang này**, mình sẽ giới thiệu về worklog của mình. **Mình đã hoàn thành nó như thế nào?** Mình mất bao nhiêu tuần để hoàn thành chương trình? **Mình đã làm gì trong những tuần đó?**
 
-Với việc sử dụng Session Manager, bạn sẽ có được những ưu điểm sau:
+Thông thường, và theo tiêu chuẩn, worklog được thực hiện trong khoảng 3 tháng (suốt thời gian thực tập) với nội dung từng tuần như sau:
+### Content
 
-- Không cần phải mở cổng 22 cho giao thức SSH.
-- Có thể cấu hình để kết nối không cần đi ra ngoài internet.
-- Không cần quản lý private key của server để kết nối SSH.
-- Quản lý tập trung được user bằng việc sử dụng AWS IAM.
-- Truy cập tới server một cách dễ dàng và đơn giản bằng một cú click chuột.
-- Thời gian truy cập nhanh chóng hơn các phương thức truyền thống như SSH.
-- Hỗ trợ nhiều hệ điều hành khác nhau như Linux, Windows, MacOS.
-- Log lại được các phiên kết nối và các câu lệnh đã thực thi trong lúc kết nối tới server.
-
-Với những ưu điểm trên, bạn có thể sử dụng Session Manager thay vì sử dụng kỹ thuật Bastion host giúp chúng ta tiết kiệm được thời gian và chi phí khi quản lý server Bastion.
+- [1.1 Week 1 Worklog](1.1-week1/)
+- [1.2 Week 2 Worklog](1.2-week2/)
+- [1.3 Week 3 Worklog](1.3-week3/)
+- [1.4 Week 4 Worklog](1.4-week4/)
+- [1.5 Week 5 Worklog](1.5-week5/)
+- [1.6 Week 6 Worklog](1.6-week6/)
+- [1.7 Week 7 Worklog](1.7-week7/)
+- [1.8 Week 8 Worklog](1.8-week8/)
+- [1.9 Week 9 Worklog](1.9-week9/)
+- [1.10 Week 10 Worklog](1.10-week10/)
+- [1.11 Week 11 Worklog](1.11-week11/)
+- [1.12 Week 12 Worklog](1.12-week12/)
+- [1.13 Week 13 Worklog](1.13-week13/)
