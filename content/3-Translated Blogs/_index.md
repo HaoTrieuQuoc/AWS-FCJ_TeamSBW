@@ -1,5 +1,5 @@
 ---
-title : "Blog 3"
+title : "Translated Blogs"
 
 weight : 3 
 chapter : false
