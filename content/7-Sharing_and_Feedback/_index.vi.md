@@ -1,5 +1,5 @@
 ---
-title : "Sharing and Feedback"
+title : "Chia sẻ và góp ý"
 
 weight : 7 
 chapter : false
