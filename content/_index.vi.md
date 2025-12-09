@@ -8,7 +8,7 @@ chapter : false
 
 ### Thông tin sinh viên:
 
-**Họ và tên:** Trieu Quoc Hao
+**Họ và tên:** Triệu Quốc Hào
 
 **Số điện thoại:** 0784919197
 
