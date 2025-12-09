@@ -5,7 +5,6 @@ weight : 2
 chapter : false
 pre : " <b> 1.12. </b> "
 ---
-# **Week 12 Worklog (24/11 – 28/11)**
 
 ## **Mục tiêu của Week 12**
 - Deploy **ứng dụng web e-commerce** lên **AWS Amplify** trong môi trường AWS thật.  

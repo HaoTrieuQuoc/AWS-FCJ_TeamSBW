@@ -5,8 +5,6 @@ weight : 2
 chapter : false
 pre : " <b> 1.12. </b> "
 ---
-# **Week 12 Worklog (24/11 – 28/11)**
-
 ## **Week 12 Objectives**
 - Deploy the **e-commerce web application** to **AWS Amplify** in a real AWS environment.  
 - Enable and integrate **Amazon CloudFront** as CDN for performance and global delivery.  
