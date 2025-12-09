@@ -1,23 +1,48 @@
 ---
-title : "Quản lý session logs"
+title : "Sự kiện đã tham gia"
 
-weight : 4 
+weight : 4
 chapter : false
 pre : " <b> 4. </b> "
 ---
+Trong quá trình thực tập, tôi đã tham gia năm sự kiện. Mỗi sự kiện đều là một trải nghiệm đáng nhớ, mang lại những kiến thức mới, thú vị và hữu ích, cùng với quà tặng và những khoảnh khắc tuyệt vời.
+## Sự kiện đã tham gia
+
+### Sự kiện 1
+**Tên sự kiện:** AWS First Cloud Journey Community Day 2025  
+**Ngày & Giờ:** Thứ Bảy, 30 tháng 8 năm 2025  
+**Địa điểm:** Bitexco Financial Tower, TP. Hồ Chí Minh  
+**Vai trò:** Người tham dự  
+
+### Sự kiện 2
+**Tên sự kiện:** AWS Vietnam Cloud Day 2025  
+**Ngày & Giờ:** Thứ Bảy, 15 tháng 11 năm 2025  
+**Địa điểm:** Bitexco Financial Tower, TP. Hồ Chí Minh  
+**Vai trò:** Người tham dự  
+
+### Sự kiện 3
+**Tên sự kiện:** AI/ML/GenAI on AWS  
+**Ngày & Giờ:** Thứ Hai, 17 tháng 11 năm 2025  
+**Địa điểm:** Bitexco Financial Tower, TP. Hồ Chí Minh  
+**Vai trò:** Người tham dự  
+
+### Sự kiện 4
+**Tên sự kiện:** DevOps on AWS  
+**Ngày & Giờ:** Thứ Hai, 17 tháng 11 năm 2025   
+**Địa điểm:** Bitexco Financial Tower, TP. Hồ Chí Minh  
+**Vai trò:** Người tham dự  
+
+### Sự kiện 5
+**Tên sự kiện:** AWS Well-Architected — Security Pillar  
+**Ngày & Giờ:** Thứ Bảy, 29/11/2025  
+**Địa điểm:** Bitexco Financial Tower, TP. Hồ Chí Minh  
+**Vai trò:** Người tham dự  
 
 
-Với Session Manager chúng ta có thể xem được lịch sử các kết nối tới các instance thông qua **Session history**. Tuy nhiên chúng ta chưa xem được chi tiết các câu lệnh được sử dụng.
+### Nội dung:
 
-![S3](/images/4.s3/001-s3.png)
-
-Trong phần này chúng ta sẽ tiến hành tạo S3 bucket và thực hiện cấu hình lưu trữ các session logs để xem được chi tiết các câu lệnh được sử dụng trong session.
-
-![port-fwd](/images/arc-log.png) 
-
-### Nội dung:
-
-  - [Cập nhật IAM Role](./4.1-updateiamrole/)
-  - [Tạo **S3 Bucket**](./4.2-creates3bucket/)
-  - [Tạo S3 Gateway endpoint](./4.3-creategwes3)
-  - [Cấu hình **Session logs**](./4.4-configsessionlogs/)
+   - [Sự kiện 1](4.1-Event%201/)
+   - [Sự kiện 2](4.2-Event%202/)
+   - [Sự kiện 3](4.3-Event%203/)
+   - [Sự kiện 4](4.4-Event%204/)
+   - [Sự kiện 5](4.5-Event%205/)

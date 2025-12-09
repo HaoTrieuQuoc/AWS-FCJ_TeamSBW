@@ -5,17 +5,44 @@ weight : 4
 chapter : false
 pre : " <b> 4. </b> "
 ---
+During my internship, I participated in five events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+## Events Participated
 
+### Event 1
+**Event Name:** AWS First Cloud Journey Community Day 2025  
+**Date & Time:** Saturday, August 30, 2025  
+**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+**Role:** Attendee  
 
-With Session Manager, we can view the history of connections to instances through **Session history**. However, we have not seen the details of the commands used in a session.
+### Event 2
+**Event Name:** AWS Vietnam Cloud Day 2025  
+**Date & Time:** Saturday, November 15, 2025  
+**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+**Role:** Attendee  
 
-![S3](/images/4.s3/001-s3.png)
+### Event 3
+**Event Name:** AI/ML/GenAI on AWS  
+**Date & Time:** Monday, November 17, 2025  
+**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+**Role:** Attendee  
 
-In this section, we will proceed to create an S3 bucket and configure the session logs feature to see the details of the commands used in the session.
+### Event 4
+**Event Name:** DevOps on AWS  
+**Date & Time:** Monday, November 17, 2025   
+**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+**Role:** Attendee  
 
-![port-fwd](/images/arc-log.png) 
+### Event 5
+**Event Name:** AWS Well-Architected — Security Pillar  
+**Date & Time:** Saturday, 29/11/2025  
+**Location:** Bitexco Financial Tower, Ho Chi Minh City  
+**Role:** Attendee  
+
 
 ### Content:
 
    - [Event 1](4.1-Event%201/)
    - [Event 2](4.2-Event%202/)
+   - [Event 3](4.3-Event%203/)
+   - [Event 4](4.4-Event%204/)
+   - [Event 5](4.5-Event%205/)

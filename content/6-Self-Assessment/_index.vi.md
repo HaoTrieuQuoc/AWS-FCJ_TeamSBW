@@ -1,83 +1,27 @@
-+++
-title = "Dọn dẹp tài nguyên  "
-date = 2021
-weight = 6
-chapter = false
-pre = "<b>6. </b>"
-+++
+---
+title : "Tự đánh giá"
 
-Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.
+weight : 6
+chapter : false
+pre : " <b> 6. </b> "
+---
+Trong quá trình thực tập tại AWS First Cloud Journey từ ngày 7 tháng 9 năm 2025 đến ngày 24 tháng 12 năm 2025, tôi đã có cơ hội học hỏi, thực hành và áp dụng những kiến thức đã được học ở trường vào môi trường làm việc thực tế.
+Tôi đã tham gia dẫn dắt quá trình phát triển một Batch Clickstream Analytics Platform trên AWS cho một website thương mại điện tử (end-to-end ingestion → batch ETL → data warehouse → analytics dashboards), qua đó tôi cải thiện kỹ năng về AWS solution architecture (VPC, S3, Lambda, API Gateway, EventBridge, EC2), lập trình backend (Node.js), data engineering & thiết kế batch ETL, PostgreSQL (mô hình hoá/truy vấn OLTP & DWH), triển khai dashboard R Shiny, cloud security & networking (private subnets, NAT strategy), troubleshooting/debugging, tài liệu kỹ thuật, và team leadership/communication.
 
-#### Xóa EC2 instance
+Về tác phong làm việc, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân thủ các quy định nơi làm việc, và chủ động trao đổi với đồng nghiệp để nâng cao hiệu quả công việc.
 
-1. Truy cập [giao diện quản trị dịch vụ EC2](https://console.aws.amazon.com/ec2/v2/home)
-  + Click **Instances**.
-  + Click chọn cả 2 instance **Public Linux Instance** và **Private Windows Instance**. 
-  + Click **Instance state**.
-  + Click **Terminate instance**, sau đó click **Terminate** để xác nhận.
-
-2. Truy cập [giao diện quản trị dịch vụ IAM](https://console.aws.amazon.com/iamv2/home#/home)
-  + Click **Roles**.
-  + Tại ô tìm kiếm , điền **SSM**.
-  + Click chọn **SSM-Role**.
-  + Click **Delete**, sau đó điền tên role **SSM-Role** và click **Delete** để xóa role.
-  
-![Clean](/images/6.clean/001-clean.png)
-
-3. Click **Users**.
-  + Click chọn user **Portfwd**.
-  + Click **Delete**, sau đó điền tên user **Portfwd** và click **Delete** để xóa user.
-
-#### Xóa S3 bucket
-
-1. Truy cập [giao diện quản trị dịch vụ System Manager - Session Manager](https://console.aws.amazon.com/systems-manager/session-manager).
-  + Click tab **Preferences**.
-  + Click **Edit**.
-  + Kéo chuột xuống dưới.
-  + Tại mục **S3 logging**.
-  + Bỏ chọn **Enable** để tắt tính năng logging.
-  + Kéo chuột xuống dưới.
-  + Click **Save**.
-
-2. Truy cập [giao diện quản trị dịch vụ S3](https://s3.console.aws.amazon.com/s3/home)
-  + Click chọn S3 bucket chúng ta đã tạo cho bài thực hành. ( Ví dụ : lab-fcj-bucket-0001 )
-  + Click **Empty**.
-  + Điền **permanently delete**, sau đó click **Empty** để tiến hành xóa object trong bucket.
-  + Click **Exit**.
-
-3. Sau khi xóa hết object trong bucket, click **Delete**
-
-![Clean](/images/6.clean/002-clean.png)
-
-4. Điền tên S3 bucket, sau đó click **Delete bucket** để tiến hành xóa S3 bucket.
-
-![Clean](/images/6.clean/003-clean.png)
-
-#### Xóa các VPC Endpoint
-
-1. Truy cập vào [giao diện quản trị dịch vụ VPC](https://console.aws.amazon.com/vpc/home)
-  + Click **Endpoints**.
-  + Chọn 4 endpoints chúng ta đã tạo cho bài thực hành bao gồm **SSM**, **SSMMESSAGES**, **EC2MESSAGES**, **S3GW**.
-  + Click **Actions**.
-  + Click **Delete VPC endpoints**.
-
-![Clean](/images/6.clean/004-clean.png)
-
-2. Tại ô confirm , điền **delete**.
-  + Click **Delete** để tiến hành xóa các endpoints.
-
-3. Click biểu tượng refresh, kiểm tra tất cả các endpoints đã bị xóa trước khi làm bước tiếp theo.
-
-![Clean](/images/6.clean/005-clean.png)
-
-#### Xóa VPC
-
-1. Truy cập vào [giao diện quản trị dịch vụ VPC](https://console.aws.amazon.com/vpc/home)
-  + Click **Your VPCs**.
-  + Click chọn **Lab VPC**.
-  + Click **Actions**.
-  + Click **Delete VPC**.
-
-2. Tại ô confirm, điền **delete** để xác nhận, click **Delete** để thực hiện xóa **Lab VPC** và các tài nguyên liên quan.
-
-![Clean](/images/6.clean/006-clean.png)
+Để phản ánh khách quan về giai đoạn thực tập, tôi xin tự đánh giá bản thân theo các tiêu chí sau:
+| No. | Tiêu chí                         | Mô tả                                                                 | Tốt | Khá | Trung bình |
+|---:|----------------------------------|-----------------------------------------------------------------------------|:----:|:----:|:-------:|
+| 1  | **Kiến thức & kỹ năng chuyên môn** | Mức độ hiểu biết lĩnh vực, áp dụng kiến thức vào thực tế, thành thạo công cụ, chất lượng công việc | ✅ | ⬜ | ⬜ |
+| 2  | **Khả năng học hỏi**               | Khả năng tiếp thu kiến thức mới và học nhanh                           | ⬜ | ✅ | ⬜ |
+| 3  | **Tính chủ động**                  | Chủ động nhận việc, tự tìm nhiệm vụ mà không chờ hướng dẫn        | ✅ | ⬜ | ⬜ |
+| 4  | **Tinh thần trách nhiệm**        | Hoàn thành đúng hạn và đảm bảo chất lượng                                | ✅ | ⬜ | ⬜ |
+| 5  | **Tính kỷ luật**                     | Tuân thủ lịch trình, quy định, và quy trình làm việc                             | ⬜ | ⬜ | ✅ |
+| 6  | **Tinh thần cầu tiến**            | Sẵn sàng tiếp nhận góp ý và cải thiện bản thân                          | ⬜ | ✅ | ⬜ |
+| 7  | **Giao tiếp**                  | Trình bày ý tưởng và báo cáo công việc rõ ràng                                  | ⬜ | ✅ | ⬜ |
+| 8  | **Làm việc nhóm**                       | Phối hợp hiệu quả với đồng nghiệp và tham gia làm việc theo nhóm                | ✅ | ⬜ | ⬜ |
+| 9  | **Tác phong chuyên nghiệp**           | Tôn trọng đồng nghiệp, đối tác, và môi trường làm việc                     | ✅ | ⬜ | ⬜ |
+| 10 | **Kỹ năng giải quyết vấn đề**         | Nhận diện vấn đề, đề xuất giải pháp, và thể hiện sự sáng tạo             | ⬜ | ✅ | ⬜ |
+| 11 | **Đóng góp cho dự án/nhóm**   | Hiệu quả công việc, ý tưởng mới, sự ghi nhận từ nhóm               | ✅ | ⬜ | ⬜ |
+| 12 | **Tổng thể**                        | Đánh giá chung về toàn bộ giai đoạn thực tập                            | ✅ | ⬜ | ⬜ |
