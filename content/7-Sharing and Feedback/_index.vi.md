@@ -5,87 +5,50 @@ weight : 7
 chapter : false
 pre : " <b> 7. </b> "
 ---
+## 7. Chia sẻ và Feedback
 
-{{% notice info %}}
-**Port Forwarding** is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With **Port Forwarding** we can access an EC2 instance located in the private subnet from our workstation.
-{{% /notice %}}
+### Đánh giá tổng quan
 
-We will configure **Port Forwarding** for the RDP connection between our machine and **Private Windows Instance** located in the private subnet we created for this exercise.
+#### 1. Môi trường làm việc
+Môi trường làm việc thân thiện, cởi mở và hỗ trợ lẫn nhau. Trong quá trình thực hiện dự án, em cảm thấy thoải mái khi đặt câu hỏi và trao đổi về các vấn đề kỹ thuật với cấc anh mentor và các bạn. Không gian làm việc và nguồn lực cung cấp cũng phù hợp để tập trung vào các task triển khai thực tế. Em mong muốn được học hỏi thêm nhiều kinh nghiệm quý báu từ các anh mentor
 
-![port-fwd](/images/arc-04.png) 
+#### 2. Sự hỗ trợ từ Mentor / Team Admin
+Mình nhận được sự hỗ trợ khá tốt từ mentor trong suốt kỳ thực tập. Mình đặc biệt thích anh Huỳnh Hoàng Long và Trần Vĩ vì những phần chia sẻ kinh nghiệm trong các buổi event rất hay. Các anh mentor khác như anh Kha, anh Thịnh Nguyễn, anh Nguyễn Thịnh,... cũng rất nhiệt tình giúp em hoàn thiện dự án
 
-#### Create IAM user with permission to connect SSM
+#### 3. Mức độ liên quan của công việc với chuyên ngành
+Công việc có mức độ liên quan cao với chuyên ngành và định hướng nghề nghiệp của em vì em định hướng mình là một Data Science nên các kiến thức về Cloud, Data Analytics, Data Science, và các kỹ năng trong quá trình làm dự án Batch Clickstream vô cùng cần thiết cho công việc sau này.
 
-1. Go to [IAM service management console](https://console.aws.amazon.com/iamv2/home)
-   + Click **Users** , then click **Add users**.
+#### 4. Cơ hội học tập và phát triển kỹ năng
+Trong kỳ thực tập, em cải thiện đáng kể kỹ năng kỹ thuật nhờ được xây dựng một hệ thống end-to-end.. Em có thể tự tin hơn trong việc thiết kế kiến trúc AWS, triển khai các thành phần hạ tầng, xử lý các lỗi connectivity/deployment, và viết tài liệu mô tả hệ thống rõ ràng. Ngoài ra, mình cũng phát triển kỹ năng teamwork và leadership khi phải điều phối task và giữ tiến độ dự án.
 
-![FWD](/images/5.fwd/001-fwd.png)
+#### 5. Văn hoá công ty & tinh thần đội nhóm
+Văn hoá làm việc tích cực và tôn trọng lẫn nhau. Khi gặp vấn đề (đặc biệt là lúc debug), mọi người sẵn sàng hỗ trợ để cùng tìm hướng giải quyết. Mình cảm thấy được lắng nghe và được xem như một phần của team dù là intern, điều này tạo động lực để em chủ động nhận trách nhiệm và đóng góp nhiều hơn.
 
-2. At the **Add user** page.
-   + In the **User name** field, enter **Portfwd**.
-   + Click on **Access key - Programmatic access**.
-   + Click **Next: Permissions**.
-  
-![FWD](/images/5.fwd/002-fwd.png)
+#### 6. Chính sách / quyền lợi thực tập
+Chính sách thực tập nhìn chung hợp lý và hỗ trợ tốt. Mình đánh giá cao việc được tham gia các buổi workshop/event vì giúp em học được nhiều kiến thức thực tế ngoài phần dự án. Nếu có thể, mình mong chương trình có thêm mốc đánh giá hoặc checkpoint rõ ràng trong quá trình thực tập để intern dễ theo dõi tiến độ và định hướng cải thiện.
 
-3. Click **Attach existing policies directly**.
-   + In the search box, enter **ssm**.
-   + Click on **AmazonSSMFullAccess**.
-   + Click **Next: Tags**, click **Next: Reviews**.
-   + Click **Create user**.
+---
 
-4. Save **Access key ID** and **Secret access key** information to perform AWS CLI configuration.
+### Câu hỏi bổ sung
 
-#### Install and Configure AWS CLI and Session Manager Plugin
-  
-To perform this hands-on, make sure your workstation has [AWS CLI]() and [Session Manager Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session) installed -manager-working-with-install-plugin.html)
+**1. Điều bạn hài lòng nhất trong kỳ thực tập là gì?**  
+Điều em hài lòng nhất là được tự tay xây dựng hệ thống Batch Clickstream Analytics trên AWS từ khâu thiết kế kiến trúc đến triển khai. Việc thấy toàn bộ flow chạy được (ingestion → lưu S3 → ETL batch → DWH → dashboard) giúp em cảm thấy kết quả rất “thật” và có giá trị. Ngoài ra, các buổi workshop cũng giúp mình kết nối dự án với best practices.
 
-More hands-on tutorials on installing and configuring the AWS CLI can be found [here](https://000011.awsstudygroup.com/).
+**2. Bạn nghĩ công ty nên cải thiện điều gì cho các intern trong tương lai?**  
+Em nghĩ AWS First Cloud Journey nên tuyển ít intern hơn để có thể dễ dàng hướng dẫn các bạn chi tiết hơn. Đồng thời, nếu có các buổi feedback đều đặn hơn thì intern có thể phát hiện sai sớm và cải thiện nhanh hơn.
 
-{{%notice tip%}}
-With Windows, when extracting the **Session Manager Plugin** installation folder, run the **install.bat** file with Administrator permission to perform the installation.
-{{%/notice%}}
+**3. Nếu giới thiệu cho bạn bè, bạn có khuyên họ thực tập tại đây không? Vì sao?**  
+Có. Em sẽ giới thiệu vì môi trường hỗ trợ tốt, trải nghiệm kỹ thuật mang tính thực tế cao, và intern có cơ hội học được kỹ năng cloud engineering thông qua dự án và các buổi workshop. Đặc biệt danh tiếng của AWS luôn là top 1 trong giới Cloud.
 
-#### Implement Portforwarding
+---
 
-1. Run the command below in **Command Prompt** on your machine to configure **Port Forwarding**.
+### Đề xuất & kỳ vọng
 
-```
-   aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region (your region)
-```
-{{%notice tip%}}
+**Bạn có đề xuất gì để cải thiện trải nghiệm thực tập không?**  
+Em nghĩ là mọi thứ đều rất ổn và tốt rồi. Nếu được thì hy vọng các anh có thể take care nhiều hơn xíu nữa. Nhưng vì các anh cũng bận khá nhiều nên em nghĩ cứ để team mày mò khi nào bí quá mới hỏi.
 
-**Windows Private Instance** **Instance ID** information can be found when you view the EC2 Windows Private Instance server details.
+**Bạn có muốn tiếp tục chương trình này trong tương lai không?**  
+Có. Em muốn tiếp tục vì chương trình để có thể làm thêm nhiều dự án xịn xò khác nữa và có thể hiểu sâu hơn các dự án liên quan đến Cloud.
 
-{{%/notice%}}
-
-   + Example command:
-
-```
-C:\Windows\system32>aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region ap-southeast-1
-```
-
-{{%notice warning%}}
-
-If your command gives an error like below: \
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\
-Prove that you have not successfully installed the Session Manager Plugin. You may need to relaunch **Command Prompt** after installing **Session Manager Plugin**.
-
-{{%/notice%}}
-
-2. Connect to the **Private Windows Instance** you created using the **Remote Desktop** tool on your workstation.
-   + In the Computer section: enter **localhost:9999**.
-
-
-![FWD](/images/5.fwd/003-fwd.png)
-
-
-3. Return to the administration interface of the System Manager - Session Manager service.
-   + Click tab **Session history**.
-   + We will see session logs with Document name **AWS-StartPortForwardingSession**.
-
-
-![FWD](/images/5.fwd/004-fwd.png)
-
-
-Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.
+**Ý kiến khác (chia sẻ tự do):**  
+Sau quãng thời gian 3 tháng thực tập thì em cảm thấy mình học được rất nhiều kiến thức cloud nhờ AWS. Được làm một dự án có đầy đủ các services hỗ trợ và là một phần của ngôi nhà AWS.

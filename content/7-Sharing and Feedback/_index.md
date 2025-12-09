@@ -6,86 +6,50 @@ chapter : false
 pre : " <b> 7. </b> "
 ---
 
-{{% notice info %}}
-**Port Forwarding** is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With **Port Forwarding** we can access an EC2 instance located in the private subnet from our workstation.
-{{% /notice %}}
+## 7. Sharing and Feedback
 
-We will configure **Port Forwarding** for the RDP connection between our machine and **Private Windows Instance** located in the private subnet we created for this exercise.
+### Overall Evaluation
 
-![port-fwd](/images/arc-04.png) 
+#### 1. Working Environment
+The working environment is friendly, open, and supportive. During the project, I felt comfortable asking questions and discussing technical topics with the mentors and other interns. The workspace and available resources were also suitable for focusing on hands-on implementation tasks. I hope to continue learning more valuable experience from the mentors.
 
-#### Create IAM user with permission to connect SSM
+#### 2. Support from Mentor / Team Admin
+I received strong support from the mentors throughout the internship. I especially enjoyed the sessions and experience-sharing from Huỳnh Hoàng Long and Trần Vĩ during the events. Other mentors such as Kha, Thịnh Nguyễn, Nguyễn Thịnh, and others were also very enthusiastic in helping me improve and complete the project.
 
-1. Go to [IAM service management console](https://console.aws.amazon.com/iamv2/home)
-   + Click **Users** , then click **Add users**.
+#### 3. Relevance of Work to My Academic Major
+The work was highly relevant to my major and career direction. Since I am aiming to become a Data Scientist, the knowledge and skills around Cloud, Data Analytics, Data Science, and the hands-on experience gained through the Batch Clickstream project are extremely valuable for my future career.
 
-![FWD](/images/5.fwd/001-fwd.png)
+#### 4. Learning & Skill Development Opportunities
+During the internship, I significantly improved my technical skills by building an end-to-end system. I became more confident in designing AWS architectures, deploying infrastructure components, troubleshooting connectivity/deployment issues, and writing clear system documentation. In addition, I also developed teamwork and leadership skills by coordinating tasks and keeping the project on track.
 
-2. At the **Add user** page.
-   + In the **User name** field, enter **Portfwd**.
-   + Click on **Access key - Programmatic access**.
-   + Click **Next: Permissions**.
-  
-![FWD](/images/5.fwd/002-fwd.png)
+#### 5. Company Culture & Team Spirit
+The company culture is positive and respectful. When issues occurred (especially during debugging), everyone was willing to support each other to find solutions. I felt listened to and treated as part of the team even as an intern, which motivated me to take ownership and contribute more proactively.
 
-3. Click **Attach existing policies directly**.
-   + In the search box, enter **ssm**.
-   + Click on **AmazonSSMFullAccess**.
-   + Click **Next: Tags**, click **Next: Reviews**.
-   + Click **Create user**.
+#### 6. Internship Policies / Benefits
+Overall, the internship policies were reasonable and supportive. I really appreciated being able to join workshops/events because they helped me learn many practical insights beyond the project itself. If possible, I hope the program can include clearer evaluation milestones or checkpoints during the internship so interns can track progress more easily and know how to improve.
 
-4. Save **Access key ID** and **Secret access key** information to perform AWS CLI configuration.
+---
 
-#### Install and Configure AWS CLI and Session Manager Plugin
-  
-To perform this hands-on, make sure your workstation has [AWS CLI]() and [Session Manager Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session) installed -manager-working-with-install-plugin.html)
+### Additional Questions
 
-More hands-on tutorials on installing and configuring the AWS CLI can be found [here](https://000011.awsstudygroup.com/).
+**1. What did you find most satisfying during your internship?**  
+What I enjoyed the most was building the Batch Clickstream Analytics system on AWS from architecture design to implementation. Seeing the entire flow working (ingestion → S3 storage → batch ETL → data warehouse → dashboard) made the result feel very real and valuable. The workshops also helped me connect the project to best practices.
 
-{{%notice tip%}}
-With Windows, when extracting the **Session Manager Plugin** installation folder, run the **install.bat** file with Administrator permission to perform the installation.
-{{%/notice%}}
+**2. What do you think the company should improve for future interns?**  
+I think AWS First Cloud Journey should recruit fewer interns so mentors can provide more detailed guidance. Also, if there are more regular feedback sessions, interns can detect mistakes earlier and improve faster.
 
-#### Implement Portforwarding
+**3. If recommending to a friend, would you suggest they intern here? Why or why not?**  
+Yes. I would recommend it because the environment is supportive, the technical experience is highly practical, and interns can learn cloud engineering skills through both the project and workshops. In particular, AWS’s reputation is always top-tier in the cloud industry.
 
-1. Run the command below in **Command Prompt** on your machine to configure **Port Forwarding**.
+---
 
-```
-   aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region (your region)
-```
-{{%notice tip%}}
+### Suggestions & Expectations
 
-**Windows Private Instance** **Instance ID** information can be found when you view the EC2 Windows Private Instance server details.
+**Do you have any suggestions to improve the internship experience?**  
+I think everything is already very good. If possible, I hope the mentors can take care of interns a bit more. However, I understand everyone is quite busy, so I think it’s fine for the team to explore and only ask when we are truly stuck.
 
-{{%/notice%}}
+**Would you like to continue this program in the future?**  
+Yes. I would like to continue because I want to work on more exciting projects and understand cloud-related projects more deeply.
 
-   + Example command:
-
-```
-C:\Windows\system32>aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region ap-southeast-1
-```
-
-{{%notice warning%}}
-
-If your command gives an error like below: \
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\
-Prove that you have not successfully installed the Session Manager Plugin. You may need to relaunch **Command Prompt** after installing **Session Manager Plugin**.
-
-{{%/notice%}}
-
-2. Connect to the **Private Windows Instance** you created using the **Remote Desktop** tool on your workstation.
-   + In the Computer section: enter **localhost:9999**.
-
-
-![FWD](/images/5.fwd/003-fwd.png)
-
-
-3. Return to the administration interface of the System Manager - Session Manager service.
-   + Click tab **Session history**.
-   + We will see session logs with Document name **AWS-StartPortForwardingSession**.
-
-
-![FWD](/images/5.fwd/004-fwd.png)
-
-
-Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.
+**Any other comments (free sharing):**  
+After three months of internship, I feel that I have learned a lot of cloud knowledge thanks to AWS. I had the chance to work on a project that uses a full set of supporting services and to be part of the AWS “family.”
