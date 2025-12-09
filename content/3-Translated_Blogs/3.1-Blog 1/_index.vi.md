@@ -5,7 +5,7 @@ weight : 1
 chapter : false
 pre : " <b> 3.1. </b> "
 ---
-**Câu chuyện khách hàng thống nhất: Mở khóa nguồn dữ liệu duy nhất cho các vấn đề của khách hàng với Amazon Connect Cases và Tasks**  
+## **Câu chuyện khách hàng thống nhất: Mở khóa nguồn dữ liệu duy nhất cho các vấn đề của khách hàng với Amazon Connect Cases và Tasks**  
 Tác giả: Ayesha Borker và Luther Fan | Ngày: 11 Tháng 9, 2025 | Trong:[Amazon Connect](https://aws.amazon.com/blogs/contact-center/category/messaging/amazon-connect/), [Thought Leadership](https://aws.amazon.com/blogs/contact-center/category/post-types/thought-leadership/)
 
 Hãy tưởng tượng một tình huống khi một khách hàng gọi điện đến một tổ chức để phản ánh vấn đề hóa đơn. Một nhân viên trung tâm liên hệ xử lý xong, nhưng ba ngày sau, cùng khách hàng đó lại gửi email về một vấn đề liên quan. Một nhân viên khác tiếp nhận email, không có thông tin gì về cuộc gọi trước đó và yêu cầu khách hàng phải giải thích lại từ đầu. Trong khi đó, một công việc theo dõi đã hứa lại bị bỏ quên trong hộp thư của ai đó, và đội ngũ tuân thủ không có bất kỳ dấu vết kiểm toán nào về những gì đã xảy ra.

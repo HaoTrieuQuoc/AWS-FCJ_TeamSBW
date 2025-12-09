@@ -21,5 +21,7 @@ This post presents how to optimize CPU/memory requests & limits on Amazon EKS us
 This post summarizes the highlights from AWS for Games at devcom and gamescom 2025: a browser-based game streaming demo with Amazon GameLift Streams combined with Lambda/API Gateway/S3/CloudFront, the ability to run multiplayer game projects on GameLift Servers using containers, and partner demos covering QA AI, localization, and analytics. It also features community highlights such as the Women in Games event and Community Clubhouse sessions on GenAI and telemetry/data-driven development. In closing, AWS emphasizes the tools and infrastructure needed to accelerate game development and operations.
 
 3.1. [Blog 1](3.1-Blog%201/)
+
 3.2. [Blog  2](3.2-Blog%202/)
+
 3.3. [Blog  3](3.3-%20Blog%203/) 

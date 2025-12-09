@@ -5,7 +5,7 @@ weight : 2
 chapter : false
 pre : " <b> 3.2. </b> "
 ---
-**Điều chỉnh Kubernetes đúng kích thước với tự động hóa GitOps dựa trên số liệu**  
+## **Điều chỉnh Kubernetes đúng kích thước với tự động hóa GitOps dựa trên số liệu**  
 Tác giả:Hari Charan Ayada and Ioannis Moustakis | Ngày: 11 Tháng 9, 2025 | Trong:  [Amazon Bedrock](https://aws.amazon.com/blogs/containers/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/), [Amazon Elastic Kubernetes Service](https://aws.amazon.com/blogs/containers/category/compute/amazon-kubernetes-service/), [Technical How-to](https://aws.amazon.com/blogs/containers/category/post-types/technical-how-to/)
 
 Phân bổ tài nguyên hiệu quả trong Kubernetes là điều cần thiết để tối ưu hóa hiệu suất ứng dụng và kiểm soát chi phí. Trong [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/), việc quản lý yêu cầu và giới hạn tài nguyên thủ công có thể gây khó khăn và dễ mắc lỗi. Bài viết này giới thiệu một phương pháp tự động hóa, dựa trên GitOps để tối ưu hóa tài nguyên bằng cách sử dụng các dịch vụ của Amazon Web Services (AWS) như  [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/) và [Amazon Bedrock](https://aws.amazon.com/bedrock/). Cách tiếp cận này đặc biệt hữu ích cho những người dùng ưa chuộng phương pháp tối ưu tài nguyên không xâm lấn.

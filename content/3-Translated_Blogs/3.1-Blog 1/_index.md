@@ -5,7 +5,7 @@ weight : 1
 chapter : false
 pre : " <b> 3.1. </b> "
 ---
-**Unified customer story: Unlock a single source of truth for customer issues with Amazon Connect Cases and Tasks**  
+## **Unified customer story: Unlock a single source of truth for customer issues with Amazon Connect Cases and Tasks**  
 Authors: Ayesha Borker and Luther Fan | Date: September 11, 2025 | In: [Amazon Connect](https://aws.amazon.com/blogs/contact-center/category/messaging/amazon-connect/), [Thought Leadership](https://aws.amazon.com/blogs/contact-center/category/post-types/thought-leadership/)
 
 Imagine a situation where a customer calls an organization to report a billing issue. A contact center agent resolves it, but three days later the same customer emails about a related problem. Another agent handles the email, has no information about the prior call, and asks the customer to explain everything again from the beginning. Meanwhile, a promised follow-up task is forgotten in someone’s inbox, and the compliance team has no audit trail of what happened.

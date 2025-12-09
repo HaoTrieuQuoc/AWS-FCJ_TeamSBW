@@ -5,7 +5,7 @@ weight : 2
 chapter : false
 pre : " <b> 3.2. </b> "
 ---
-**Right-size Kubernetes with metrics-driven GitOps automation**  
+## **Right-size Kubernetes with metrics-driven GitOps automation**  
 Authors: Hari Charan Ayada and Ioannis Moustakis | Date: September 11, 2025 | In:  [Amazon Bedrock](https://aws.amazon.com/blogs/containers/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/), [Amazon Elastic Kubernetes Service](https://aws.amazon.com/blogs/containers/category/compute/amazon-kubernetes-service/), [Technical How-to](https://aws.amazon.com/blogs/containers/category/post-types/technical-how-to/)
 
 Efficient resource allocation in Kubernetes is essential to optimize application performance and control costs. In [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/), managing resource requests and limits manually can be difficult and error-prone. This post introduces an automated, GitOps-based approach to resource optimization using Amazon Web Services (AWS) such as [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/) and [Amazon Bedrock](https://aws.amazon.com/bedrock/). This approach is especially useful for users who prefer non-intrusive resource optimization.
