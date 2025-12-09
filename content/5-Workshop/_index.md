@@ -1,91 +1,91 @@
 ---
-title : "Workshop"
-
-weight : 5 
-chapter : false
-pre : " <b> 5. </b> "
+title: "Workshop"
+weight: 5
+chapter: false
+pre: "<b>5. </b>"
 ---
 
-{{% notice info %}}
-**Port Forwarding** is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With **Port Forwarding** we can access an EC2 instance located in the private subnet from our workstation.
-{{% /notice %}}
+# Batch-Based Clickstream Analytics Platform
 
-We will configure **Port Forwarding** for the RDP connection between our machine and **Private Windows Instance** located in the private subnet we created for this exercise.
+![Architecture](/images/5.workshop/architecture.png)
+<p align="center"><em>Figure: Architecture Batch-base Clickstream Analytics Platform.</em></p>
 
-![port-fwd](/images/arc-04.png) 
+#### Overview
 
-#### Create IAM user with permission to connect SSM
+This workshop implements a **Batch-Based Clickstream Analytics Platform** for an e-commerce website selling computer products.
 
-1. Go to [IAM service management console](https://console.aws.amazon.com/iamv2/home)
-   + Click **Users** , then click **Add users**.
+The system collects clickstream events from the frontend, stores raw JSON data in **Amazon S3**, processes events via scheduled ETL (**AWS Lambda + EventBridge**), and loads analytical data into a dedicated **PostgreSQL Data Warehouse on EC2** inside a private subnet.
 
-![FWD](/images/5.fwd/001-fwd.png)
+Analytics dashboards are built using **R Shiny**, running on the same EC2 instance as the Data Warehouse, and accessed via **AWS Systems Manager Session Manager**.
 
-2. At the **Add user** page.
-   + In the **User name** field, enter **Portfwd**.
-   + Click on **Access key - Programmatic access**.
-   + Click **Next: Permissions**.
-  
-![FWD](/images/5.fwd/002-fwd.png)
+The platform is engineered with:
 
-3. Click **Attach existing policies directly**.
-   + In the search box, enter **ssm**.
-   + Click on **AmazonSSMFullAccess**.
-   + Click **Next: Tags**, click **Next: Reviews**.
-   + Click **Create user**.
+- Clear separation between **OLTP vs Analytics** workloads  
+- Private-only analytical backend (**no public DW access**)  
+- Cost-efficient, scalable AWS serverless components  
+- Zero-SSH admin access via **SSM Session Manager** into the private DW / Shiny EC2 
+- You can run the Shiny app locally at **localhost:3838**
 
-4. Save **Access key ID** and **Secret access key** information to perform AWS CLI configuration.
+#### Key Architecture Components
 
-#### Install and Configure AWS CLI and Session Manager Plugin
-  
-To perform this hands-on, make sure your workstation has [AWS CLI]() and [Session Manager Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session) installed -manager-working-with-install-plugin.html)
+**Frontend & OLTP Domain**
 
-More hands-on tutorials on installing and configuring the AWS CLI can be found [here](https://000011.awsstudygroup.com/).
+- Next.js app: **`ClickSteam.NextJS`** hosted on **AWS Amplify Hosting**  
+- **Amazon CloudFront** as global CDN  
+- **Amazon Cognito** User Pool for authentication  
+- OLTP PostgreSQL on EC2: **`SBW_EC2_WebDB`** (public subnet)  
+  - DB: `clickstream_web` (schema `public`)  
+  - Port: `5432`  
 
-{{%notice tip%}}
-With Windows, when extracting the **Session Manager Plugin** installation folder, run the **install.bat** file with Administrator permission to perform the installation.
-{{%/notice%}}
+**Ingestion & Data Lake Domain**
 
-#### Implement Portforwarding
+- **Amazon API Gateway (HTTP API)**: `clickstream-http-api`  
+  - Route: `POST /clickstream`  
+- **Lambda Ingest**: `clickstream-lambda-ingest`  
+  - Validates payload, enriches metadata, writes JSON files to S3  
+- **S3 Raw Clickstream Bucket**: `clickstream-s3-ingest`  
+  - Prefix: `events/YYYY/MM/DD/`  
+  - File pattern: `event-<uuid>.json`  
+  - `RAW_BUCKET = clickstream-s3-ingest`  
 
-1. Run the command below in **Command Prompt** on your machine to configure **Port Forwarding**.
+**Analytics & Data Warehouse Domain**
 
-```
-   aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region (your region)
-```
-{{%notice tip%}}
+- **Private EC2 for DWH + Shiny**: `SBW_EC2_ShinyDWH` (private subnet `10.0.128.0/20`)  
+  - DWH DB: `clickstream_dw` 
+  - Main table: `clickstream_events` with fields:
+    - `event_id, event_timestamp, event_name`  
+    - `user_id, user_login_state, identity_source, client_id, session_id, is_first_visit`  
+    - `context_product_id, context_product_name, context_product_category, context_product_brand`  
+    - `context_product_price, context_product_discount_price, context_product_url_path`  
+  - R Shiny Server on port `3838`, web path `/sbw_dashboard`  
 
-**Windows Private Instance** **Instance ID** information can be found when you view the EC2 Windows Private Instance server details.
+- **Lambda ETL**: `SBW_Lamda_ETL` (VPC-enabled)  
+  - Reads raw JSON from `clickstream-s3-ingest`  
+  - Transforms into SQL-ready rows  
+  - Inserts into `clickstream_dw.public.clickstream_events`  
 
-{{%/notice%}}
+- **EventBridge Rule**: `SBW_ETL_HOURLY_RULE`  
+  - Schedule: `rate(1 hour)`  
 
-   + Example command:
+- **VPC & Networking**
 
-```
-C:\Windows\system32>aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region ap-southeast-1
-```
+  - VPC CIDR: `10.0.0.0/16`  
+  - Public subnet: `10.0.0.0/20` → `SBW_Project-subnet-public1-ap-southeast-1a` (OLTP EC2)  
+  - Private subnet: `10.0.128.0/20` → `SBW_Project-subnet-private1-ap-southeast-1a` (DW, Shiny, ETL Lambda)  
+  - **S3 Gateway VPC Endpoint** for private S3 access  
+  - **SSM Interface Endpoints** (SSM, SSMMessages, EC2Messages) for Session Manager  
 
-{{%notice warning%}}
+- **Admin Access (SSM)**  
+  - Port forwarding:
+    - `localPort = 3838`  
+    - `portNumber = 3838`  
+  - Shiny URL from local: `http://localhost:3838/sbw_dashboard`  
 
-If your command gives an error like below: \
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\
-Prove that you have not successfully installed the Session Manager Plugin. You may need to relaunch **Command Prompt** after installing **Session Manager Plugin**.
+#### Content Map
 
-{{%/notice%}}
-
-2. Connect to the **Private Windows Instance** you created using the **Remote Desktop** tool on your workstation.
-   + In the Computer section: enter **localhost:9999**.
-
-
-![FWD](/images/5.fwd/003-fwd.png)
-
-
-3. Return to the administration interface of the System Manager - Session Manager service.
-   + Click tab **Session history**.
-   + We will see session logs with Document name **AWS-StartPortForwardingSession**.
-
-
-![FWD](/images/5.fwd/004-fwd.png)
-
-
-Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.
+1. **[5.1. Objectives & Scope](5.1-objectives--scope/)**  
+2. **[5.2. Architecture Walkthrough](5.2-architecture-walkthrough/)**  
+3. **[5.3. Implementing Clickstream Ingestion](5.3-implementing-clickstream-ingestion/)**  
+4. **[5.4. Building the Private Analytics Layer](5.4-building-private-analytics-layer/)**  
+5. **[5.5. Visualizing Analytics with Shiny Dashboards](5.5-visualizing-analytics-with-shiny-dashboards/)**  
+6. **[5.6. Summary & Clean up](5.6-summary-cleanup/)**

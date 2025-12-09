@@ -1,93 +1,91 @@
 ---
-title : "Port Forwarding"
-
-weight : 5 
-chapter : false
-pre : " <b> 5. </b> "
+title: "Workshop"
+weight: 5
+chapter: false
+pre: "<b>5. </b>"
 ---
 
-{{% notice info %}}
-**Port Forwarding** là mốt cách thức hữu ích để chuyển hướng lưu lượng mạng từ 1 địa chỉ IP - Port này sang 1 địa chỉ IP - Port khác. Với **Port Forwarding** chúng ta có thể truy cập một EC2 instance nằm trong private subnet từ máy trạm của chúng ta.
-{{% /notice %}}
+# Batch-Based Clickstream Analytics Platform
 
-Chúng ta sẽ cấu hình **Port Forwarding** cho kết nối RDP giữa máy của mình với **Private Windows Instance** nằm trong private subnet mà chúng ta đã tạo cho bài thực hành này.
+![Architecture](/images/5.workshop/architecture.png)
+<p align="center"><em>Figure: Architecture Batch-base Clickstream Analytics Platform.</em></p>
 
-![port-fwd](/images/arc-04.png) 
+#### Tổng quan
 
+Workshop này triển khai một **nền tảng phân tích Clickstream theo kiểu batch (Batch-Based Clickstream Analytics Platform)** cho một website thương mại điện tử bán sản phẩm máy tính.
 
+Hệ thống thu thập các sự kiện (events) clickstream từ frontend, lưu dữ liệu JSON thô trong **Amazon S3**, xử lý events theo lịch ETL định kỳ (**AWS Lambda + EventBridge**), và nạp dữ liệu phân tích vào một **PostgreSQL Data Warehouse trên EC2** nằm trong private subnet.
 
-#### Tạo IAM User có quyền kết nối SSM
+Các dashboard phân tích được xây dựng bằng **R Shiny**, chạy trên cùng EC2 với Data Warehouse, và được truy cập thông qua **AWS Systems Manager Session Manager**.
 
-1. Truy cập vào [giao diện quản trị dịch vụ IAM](https://console.aws.amazon.com/iamv2/home)
-  + Click **Users** , sau đó click **Add users**.
+Nền tảng được thiết kế với các tiêu chí:
 
-![FWD](/images/5.fwd/001-fwd.png)
+- Tách biệt rõ ràng giữa workload **OLTP và Analytics**  
+- Backend analytics chỉ chạy trong private subnet (**không có truy cập public vào DW**)  
+- Sử dụng các thành phần serverless của AWS để tối ưu chi phí và khả năng mở rộng  
+- Quản trị qua **SSM Session Manager** vào EC2 chạy DW / Shiny  
+- Có thể chạy web Shiny bằng **localhost:3838**
 
-2. Tại trang **Add user**.
-  + Tại mục **User name**, điền **Portfwd**.
-  + Click chọn **Access key - Programmatic access**.
-  + Click **Next: Permissions**.
-  
-![FWD](/images/5.fwd/002-fwd.png)
+#### Các thành phần kiến trúc chính
 
-3. Click **Attach existing policies directly**.
-  + Tại ô tìm kiếm , điền **ssm**.
-  + Click chọn **AmazonSSMFullAccess**.
-  + Click **Next: Tags**, click **Next: Reviews**.
-  + Click **Create user**.
+**Miền Frontend & OLTP**
 
-4. Lưu lại thông tin **Access key ID** và **Secret access key** để thực hiện cấu hình AWS CLI.
+- Ứng dụng Next.js: **`ClickSteam.NextJS`** được host bằng **AWS Amplify Hosting**  
+- **Amazon CloudFront** được tích hợp trong **Amplify** giúp tăng tốc độ truyền tải file tĩnh 
+- **Amazon Cognito** User Pool để xác thực người dùng  
+- PostgreSQL OLTP chạy trên EC2: **`SBW_EC2_WebDB`** (public subnet)  
+  - Database: `clickstream_web` (schema `public`)  
+  - Port: `5432`  
 
-#### Cài đặt và cấu hình AWS CLI và Session Manager Plugin 
-  
-Để thực hiện phần thực hành này, đảm bảo máy trạm của bạn đã cài [AWS CLI]() và [Session Manager Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
+**Miền Ingestion & Data Lake**
 
-Bạn có thể tham khảo thêm bài thực hành về cài đặt và cấu hình AWS CLI [tại đây](https://000011.awsstudygroup.com/).
+- **Amazon API Gateway (HTTP API)**: `clickstream-http-api`  
+  - Route: `POST /clickstream`  
+- **Lambda Ingest**: `clickstream-lambda-ingest`  
+  - Validate payload, enrich metadata, ghi file JSON vào S3  
+- **S3 Raw Clickstream Bucket**: `clickstream-s3-ingest`  
+  - Prefix: `events/YYYY/MM/DD/`  
+  - Mẫu tên file: `event-<uuid>.json`  
+  - `RAW_BUCKET = clickstream-s3-ingest`  
 
-{{%notice tip%}}
-Với Windows thì khi giải nén thư mục cài đặt **Session Manager Plugin** bạn hãy chạy file **install.bat** với quyền Administrator để thực hiện cài đặt.
-{{%/notice%}}
+**Miền Analytics & Data Warehouse**
 
-#### Thực hiện Portforwarding 
+- **EC2 private cho DWH + Shiny**: `SBW_EC2_ShinyDWH` (private subnet `10.0.128.0/20`)  
+  - Database DW: `clickstream_dw` 
+  - Bảng chính: `clickstream_events` với các field:
+    - `event_id, event_timestamp, event_name`  
+    - `user_id, user_login_state, identity_source, client_id, session_id, is_first_visit`  
+    - `context_product_id, context_product_name, context_product_category, context_product_brand`  
+    - `context_product_price, context_product_discount_price, context_product_url_path`  
+  - R Shiny Server chạy trên port `3838`, web path `/sbw_dashboard`  
 
-1. Chạy command dưới đây trong **Command Prompt** trên máy của bạn để cấu hình **Port Forwarding**.
+- **Lambda ETL**: `SBW_Lamda_ETL` (chạy trong VPC)  
+  - Đọc JSON thô từ `clickstream-s3-ingest`  
+  - Transform thành các dòng dữ liệu dạng SQL-ready  
+  - Insert vào bảng `clickstream_dw.public.clickstream_events`  
 
-```
-  aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region (your region) 
-```
-{{%notice tip%}}
+- **EventBridge Rule**: `SBW_ETL_HOURLY_RULE`  
+  - Lịch chạy: `rate(1 hour)`  
 
-Thông tin **Instance ID** của **Windows Private Instance** có thể tìm được khi bạn xem chi tiết máy chủ EC2 Windows Private Instance.
+- **VPC & Networking**
 
-{{%/notice%}}
+  - VPC CIDR: `10.0.0.0/16`  
+  - Public subnet: `10.0.0.0/20` → `SBW_Project-subnet-public1-ap-southeast-1a` (EC2 OLTP)  
+  - Private subnet: `10.0.128.0/20` → `SBW_Project-subnet-private1-ap-southeast-1a` (DW, Shiny, ETL Lambda)  
+  - **S3 Gateway VPC Endpoint** để truy cập S3 trong private network  
+  - **SSM Interface Endpoints** (SSM, SSMMessages, EC2Messages) cho Session Manager  
 
-  + Câu lệnh ví dụ
+- **Truy cập quản trị (SSM)**  
+  - Port forwarding:
+    - `localPort = 3838`  
+    - `portNumber = 3838`  
+  - Shiny URL khi truy cập từ local: `http://localhost:3838/sbw_dashboard`  
 
-```
-C:\Windows\system32>aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region ap-southeast-1
-```
+#### Bản đồ nội dung
 
-{{%notice warning%}}
-
-Nếu câu lệnh của bạn báo lỗi như dưới đây : \
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\
-Chứng tỏ bạn chưa cài Session Manager Plugin thành công. Bạn có thể cần khởi chạy lại **Command Prompt** sau khi cài **Session Manager Plugin**.
-
-{{%/notice%}}
-
-2. Kết nối tới **Private Windows Instance** bạn đã tạo bằng công cụ **Remote Desktop** trên máy trạm của bạn.
-  + Tại mục Computer: điền **localhost:9999**.
-
-
-![FWD](/images/5.fwd/003-fwd.png)
-
-
-3. Quay trở lại giao diện quản trị của dịch vụ System Manager - Session Manager.
-  + Click tab **Session history**.
-  + Chúng ta sẽ thấy các session logs với tên Document là **AWS-StartPortForwardingSession**.
-
-
-![FWD](/images/5.fwd/004-fwd.png)
-
-
-Chúc mừng bạn đã hoàn tất bài thực hành hướng dẫn cách sử dụng Session Manager để kết nối cũng như lưu trữ các session logs trong S3 bucket. Hãy nhớ thực hiện bước dọn dẹp tài nguyên để tránh sinh chi phí ngoài ý muốn nhé.
+1. **[5.1. Objectives & Scope](5.1-objectives--scope/)**  
+2. **[5.2. Architecture Walkthrough](5.2-architecture-walkthrough/)**  
+3. **[5.3. Implementing Clickstream Ingestion](5.3-implementing-clickstream-ingestion/)**  
+4. **[5.4. Building the Private Analytics Layer](5.4-building-private-analytics-layer/)**  
+5. **[5.5. Visualizing Analytics with Shiny Dashboards](5.5-visualizing-analytics-with-shiny-dashboards/)**  
+6. **[5.6. Summary & Clean up](5.6-summary-cleanup/)**
