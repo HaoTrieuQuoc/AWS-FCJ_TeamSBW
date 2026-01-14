@@ -1,3 +1,15 @@
 [submodule "themes/hugo-theme-learn"]
 	path = themes/hugo-theme-learn
 	url = https://github.com/matcornic/hugo-theme-learn.git
+[submodule "ClickStream_Project/ClickSteam.NextJS"]
+	path = ClickStream_Project/ClickSteam.NextJS
+	url = https://github.com/SBW-Cloudworks/ClickSteam.NextJS
+[submodule "ClickStream_Project/ClickStream.LocalStack-Terraform"]
+	path = ClickStream_Project/ClickStream.LocalStack-Terraform
+	url = https://github.com/SBW-Cloudworks/ClickStream.LocalStack-Terraform
+[submodule "ClickStream_Project/ClickStream.Lambda"]
+	path = ClickStream_Project/ClickStream.Lambda
+	url = https://github.com/SBW-Cloudworks/ClickStream.Lambda
+[submodule "ClickStream_Project/ClickSteam.RShiny"]
+	path = ClickStream_Project/ClickSteam.RShiny
+	url = https://github.com/SBW-Cloudworks/ClickSteam.RShiny
